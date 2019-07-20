@@ -1,0 +1,7 @@
+mkdir ppp
+cat > ppp/chap-secrets <<EOF
+# Secrets for authentication using PAP
+# client    server      secret      acceptable local IP addresses
+userxx		*           userxxpw		*
+EOF
+docker run -d --privileged --net=host -v ~/ppp/chap-secrets:/etc/ppp/chap-secrets mobtitude/vpn-pptp
